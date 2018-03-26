@@ -14,17 +14,28 @@ export class AppComponent {
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
 
+  editTask() {
+    alert("Time to edit a task!");
+  }
   tasks: Task[] = [
-    new Task('Finish angular hw'),
-    new Task('Javascript brainstorm'),
-    new Task('Add readme')
+    new Task('Finish angular hw', 3),
+    new Task('Javascript brainstorm', 2),
+    new Task('Add readme', 2)
 
   ];
 
-
+  priorityColor(currentTask){
+    if(currentTask.priority === 3){
+      return "bg-danger";
+    } else if (currentTask.priority === 2) {
+      return "bg-warning";
+    } else {
+      return "bg-info";
+      }
+    }
 }
 
 export class Task {
   public done: boolean = false;
-  constructor(public description: string) { }
+  constructor(public description: string, public priorityColor: number) { }
 }

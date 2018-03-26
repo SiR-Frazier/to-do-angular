@@ -14,8 +14,11 @@ export class AppComponent {
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
 
-  editTask() {
-    alert("Time to edit a task!");
+
+
+  editTask(clickedTask) {
+    alert("You want to edit a task?");
+    this.selectedTask = clickedTask;
   }
   tasks: Task[] = [
     new Task('Finish angular hw', 3),
@@ -23,6 +26,8 @@ export class AppComponent {
     new Task('Add readme', 2)
 
   ];
+
+  selectedTask: Task = this.tasks[0];
 
   priorityColor(currentTask){
     if(currentTask.priority === 3){
